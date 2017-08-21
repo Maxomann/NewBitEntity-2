@@ -1,6 +1,5 @@
 #pragma once
 #include "stdafx.h"
-#include "UpdateOrder.h"
 
 namespace nb
 {
@@ -10,6 +9,10 @@ namespace nb
 
 	class System
 	{
+	public:
+		using UpdateOrder = int;
+
+	private:
 		const UpdateOrder m_updateOrder;
 
 		World* r_world;

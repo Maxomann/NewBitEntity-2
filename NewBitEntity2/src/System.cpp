@@ -2,7 +2,7 @@
 using namespace std;
 using namespace nb;
 
-nb::System::System( UpdateOrder updateOrder )
+System::System( UpdateOrder updateOrder )
 	: m_updateOrder( updateOrder )
 {
 }
@@ -22,7 +22,7 @@ World * nb::System::world() const
 	return r_world;
 }
 
-UpdateOrder nb::System::getUpdateOrder() const
+System::UpdateOrder nb::System::getUpdateOrder() const
 {
 	return m_updateOrder;
 }
