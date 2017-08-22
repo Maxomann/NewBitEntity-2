@@ -2,6 +2,7 @@
 
 #include <src/World.h>
 
+using namespace std;
 using namespace nb;
 
 int main()

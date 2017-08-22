@@ -81,7 +81,7 @@ std::vector<Entity> nb::EntityManager::removeEntities_move( std::vector<Entity*>
 	return retVal;
 }
 
-int nb::EntityManager::getEntityCount() const
+std::size_t nb::EntityManager::getEntityCount() const
 {
 	return m_entities.size();
 }

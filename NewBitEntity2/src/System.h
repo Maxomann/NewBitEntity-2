@@ -3,8 +3,6 @@
 
 namespace nb
 {
-	class SystemManager;
-	class EntityManager;
 	class World;
 
 	class System
@@ -13,12 +11,12 @@ namespace nb
 		using UpdatePriotity = int;
 
 	private:
-		const UpdatePriotity m_updateOrder;
+		const UpdatePriotity updatePriority;
 
 	public:
-		DLL_EXPORT System( UpdatePriotity updateOrder = 0 );
+		DLL_EXPORT System( UpdatePriotity updatePriority = 0 );
 		DLL_EXPORT System( const System& system ) = delete;
-		DLL_EXPORT System( System&& system ) = default;
+		DLL_EXPORT System( System&& system ) = delete;
 		DLL_EXPORT virtual ~System() = default;
 
 		virtual void preInit( World* world ) = 0;

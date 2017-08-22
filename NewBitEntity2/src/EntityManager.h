@@ -21,7 +21,7 @@ namespace nb
 
 		DLL_EXPORT std::vector<Entity> removeEntities_move( std::vector<Entity*> entities );
 
-		DLL_EXPORT int getEntityCount()const;
+		DLL_EXPORT std::size_t getEntityCount()const;
 
 		smartsignals::Signal<void( Entity* )> s_onEntityAdded;
 		smartsignals::Signal<void( const std::vector<Entity*>& )> s_onEntitiesRemoved;

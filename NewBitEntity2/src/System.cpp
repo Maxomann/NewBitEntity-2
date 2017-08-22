@@ -2,12 +2,12 @@
 using namespace std;
 using namespace nb;
 
-System::System( UpdatePriotity updateOrder )
-	: m_updateOrder( updateOrder )
+System::System( UpdatePriotity updatePriority )
+	: updatePriority( updatePriority )
 {
 }
 
 System::UpdatePriotity nb::System::getUpdatePriority() const
 {
-	return m_updateOrder;
+	return updatePriority;
 }

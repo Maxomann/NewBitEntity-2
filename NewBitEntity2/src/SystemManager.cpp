@@ -1,9 +1,5 @@
 #include "SystemManager.h"
 
-nb::SystemManager::SystemManager( World& world )
-	: r_world( &world )
-{}
-
 void nb::SystemManager::sortSystemsByUpdateOrder()
 {
 	if (!m_isSorted)

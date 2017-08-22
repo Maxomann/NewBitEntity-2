@@ -7,12 +7,10 @@ namespace nb
 
 	class Component
 	{
-		Entity* r_entity;
-
 	public:
 		DLL_EXPORT Component() = default;
 		DLL_EXPORT Component( const Component& component ) = delete;
-		DLL_EXPORT Component( Component&& component ) = default;
+		DLL_EXPORT Component( Component&& component ) = delete;
 		DLL_EXPORT virtual ~Component() = default;
 
 		// Do not store the entity pointer. It may be invalidated through move operations on Entity.
