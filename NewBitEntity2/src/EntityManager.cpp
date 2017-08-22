@@ -13,7 +13,6 @@ void nb::EntityManager::executeRemoveEntities()
 			if (*it == &el)
 			{
 				m_toDelete.erase( remove( m_toDelete.begin(), m_toDelete.end(), &el ), m_toDelete.end() );
-				el.outsideConnections.disconnectAll();
 				return true;
 			}
 		}
@@ -33,7 +32,7 @@ Entity * nb::EntityManager::addEntity( Entity&& entity )
 	m_entities.push_back( std::move( entity ) );
 
 	Entity* en = &m_entities.back();
-	if (!en->isInit())
+	if( !en->getInitStatus() )
 		en->init();
 	s_onEntityAdded.call( en );
 	s_onEntityCountChanged.call( getEntityCount() );
@@ -67,7 +66,6 @@ std::vector<Entity> nb::EntityManager::removeEntities_move( std::vector<Entity*>
 			if (*it == &el)
 			{
 				entities.erase( remove( entities.begin(), entities.end(), &el ), entities.end() );
-				el.outsideConnections.disconnectAll();
 				retVal.push_back( move( el ) );
 				return true;
 			}

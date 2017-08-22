@@ -15,19 +15,13 @@ namespace nb
 		DLL_EXPORT Component( Component&& component ) = default;
 		DLL_EXPORT virtual ~Component() = default;
 
-		DLL_EXPORT void linkToEntity( Entity* entity );
-		/*[[deprecated]]*/ DLL_EXPORT Entity* getEntity()const;
-		DLL_EXPORT Entity* entity()const;
-		template<class T>
-		T* component()const
-		{
-			return entity()->getComponent<T>();
-		};
-
+		// Do not store the entity pointer. It may be invalidated through move operations on Entity.
+		virtual void preInit( Entity* entity ) = 0;
 		virtual void init() = 0;
 	};
 
 	/*
+		virtual void preInit( Entity* entity )override;
 		virtual void init() override;
 	*/
 }

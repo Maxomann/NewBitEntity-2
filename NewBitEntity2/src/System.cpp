@@ -2,27 +2,12 @@
 using namespace std;
 using namespace nb;
 
-System::System( UpdateOrder updateOrder )
+System::System( UpdatePriotity updateOrder )
 	: m_updateOrder( updateOrder )
 {
 }
 
-void System::linkToWorld( World* world )
-{
-	r_world = world;
-};
-
-World* System::getWorld()const
-{
-	return r_world;
-};
-
-World * nb::System::world() const
-{
-	return r_world;
-}
-
-System::UpdateOrder nb::System::getUpdateOrder() const
+System::UpdatePriotity nb::System::getUpdatePriority() const
 {
 	return m_updateOrder;
 }

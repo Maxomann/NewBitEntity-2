@@ -9,7 +9,7 @@ void nb::SystemManager::sortSystemsByUpdateOrder()
 	if (!m_isSorted)
 	{
 		std::sort( m_systemsByUpdateOrder.begin(), m_systemsByUpdateOrder.end(), [&]( const System* lhs, const System* rhs ) {
-			return lhs->getUpdateOrder() < rhs->getUpdateOrder();
+			return lhs->getUpdatePriority() < rhs->getUpdatePriority();
 		} );
 		m_isSorted = true;
 	}

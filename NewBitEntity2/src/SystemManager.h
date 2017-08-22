@@ -68,7 +68,6 @@ namespace nb
 			try
 			{
 				auto& system = m_systems.at( typeIndex );
-				system->destroy();
 				m_systemsByUpdateOrder.erase(
 					std::remove( m_systemsByUpdateOrder.begin(),
 								 m_systemsByUpdateOrder.end(),
