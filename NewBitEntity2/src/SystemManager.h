@@ -42,7 +42,6 @@ namespace nb
 			auto systemPointer = (T*) insertResult.first->second.get();
 
 			systemsByUpdateOrder.push_back( systemPointer );
-			m_isSorted = false;
 			return systemPointer;
 		};
 

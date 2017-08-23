@@ -12,7 +12,7 @@ namespace nb
 	public:
 		DLL_EXPORT Entity() = default;
 		DLL_EXPORT Entity( const Entity& entity ) = delete;
-		DLL_EXPORT Entity( Entity&& entity );
+		DLL_EXPORT Entity( Entity&& entity ) = default;
 
 		// T must inherit from Component
 		template < class T, class ... Args >

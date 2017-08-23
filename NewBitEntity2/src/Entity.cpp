@@ -2,12 +2,6 @@
 using namespace std;
 using namespace nb;
 
-Entity::Entity( Entity&& entity )
-{
-	components = move( entity.components );
-	isInit = move( entity.isInit );
-}
-
 void nb::Entity::init()
 {
 	if( isInit )
