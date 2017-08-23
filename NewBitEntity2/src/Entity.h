@@ -75,7 +75,7 @@ namespace nb
 			}
 		};
 
-		/* can be called manually, even if this entity is not added to world. init is supposed to set up the entity *internally* only */
+		/* must be called before Entity is added to world. init is supposed to set up the entity *internally* only */
 		DLL_EXPORT void init();
 
 		DLL_EXPORT bool getInitStatus()const;

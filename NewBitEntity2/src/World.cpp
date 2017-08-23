@@ -8,5 +8,4 @@ nb::World::World()
 void nb::World::update()
 {
 	updateSystems();
-	executeRemoveEntities();
 }
