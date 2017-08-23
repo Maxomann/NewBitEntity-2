@@ -6,7 +6,7 @@ namespace nb
 {
 	class Entity
 	{
-		std::map<std::type_index, std::unique_ptr<Component>> m_components;
+		std::map<std::type_index, std::unique_ptr<Component>> components;
 		bool isInit = false;
 
 	public:
@@ -27,7 +27,7 @@ namespace nb
 
 			const std::type_index typeIndex( typeid( T ) );
 
-			auto insertResult = m_components.insert( std::make_pair( typeIndex, std::move( component ) ) );
+			auto insertResult = components.insert( std::make_pair( typeIndex, std::move( component ) ) );
 			if( !insertResult.second )
 			{
 				throw std::logic_error( "Cannot register the same Component more than once. Name: "s + typeIndex.name() );
@@ -41,7 +41,7 @@ namespace nb
 			const std::type_index typeIndex( typeid( T ) );
 			try
 			{
-				return (T*) m_components.at( typeIndex ).get();
+				return (T*) components.at( typeIndex ).get();
 			}
 			catch( std::out_of_range )
 			{
@@ -53,26 +53,11 @@ namespace nb
 		T* getComponent_try()const
 		{
 			const std::type_index typeIndex( typeid( T ) );
-			auto result = m_components.find( typeIndex );
-			if( result != m_components.end() )
+			auto result = components.find( typeIndex );
+			if( result != components.end() )
 				return (T*) result->second.get();
 			else
 				return nullptr;
-		};
-
-		template < class T >
-		void removeComponent()
-		{
-			const std::type_index typeIndex( typeid( T ) );
-			try
-			{
-				auto& component = m_components.at( typeIndex );
-				m_components.erase( typeIndex );
-			}
-			catch( std::out_of_range )
-			{
-				std::logic_error( "Component does not exist. Typename: "s + typeIndex.name() );
-			}
 		};
 
 		/* must be called before Entity is added to world. init is supposed to set up the entity *internally* only */

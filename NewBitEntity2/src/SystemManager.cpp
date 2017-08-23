@@ -2,31 +2,31 @@
 
 void nb::SystemManager::sortSystemsByUpdateOrder()
 {
-	if (!m_isSorted)
-	{
-		std::sort( m_systemsByUpdateOrder.begin(), m_systemsByUpdateOrder.end(), [&]( const System* lhs, const System* rhs ) {
-			return lhs->getUpdatePriority() < rhs->getUpdatePriority();
-		} );
-		m_isSorted = true;
-	}
+	if( !isInit )
+		throw std::logic_error( "Cannot sort Systems after initilaization" );
+
+	std::sort( systemsByUpdateOrder.begin(), systemsByUpdateOrder.end(), [&] ( const System* lhs, const System* rhs ){
+		return lhs->getUpdatePriority() < rhs->getUpdatePriority();
+	} );
 }
 
 void nb::SystemManager::updateSystems()
 {
-	sortSystemsByUpdateOrder();
-	for (auto& el : m_systemsByUpdateOrder)
+	for( auto& el : systemsByUpdateOrder )
 		el->update();
 }
 
 void nb::SystemManager::initSystems()
 {
-	if (m_isInit)
+	if( isInit )
 	{
-		throw std::logic_error("SystemManager is already initialized");
+		throw std::logic_error( "SystemManager is already initialized" );
 	}
-	for (auto& el : m_systems)
+	for( auto& el : systems )
 	{
 		el.second->init();
 	}
-	m_isInit = true;
+	sortSystemsByUpdateOrder();
+
+	isInit = true;
 }

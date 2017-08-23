@@ -4,22 +4,22 @@ using namespace nb;
 
 Entity::Entity( Entity&& entity )
 {
-	m_components = move( entity.m_components );
+	components = move( entity.components );
 	isInit = move( entity.isInit );
 }
 
 void nb::Entity::init()
 {
-	if (isInit)
+	if( isInit )
 	{
-		throw std::logic_error("Entity is already initialized");
+		throw std::logic_error( "Entity is already initialized" );
 	}
 	else
 	{
 		// init components
-		for( auto& el : m_components )
+		for( auto& el : components )
 			el.second->preInit( this );
-		for( auto& el : m_components )
+		for( auto& el : components )
 			el.second->init();
 
 		isInit = true;
